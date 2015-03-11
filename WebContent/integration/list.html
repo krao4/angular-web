@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<script src= "../resources/controller.js"></script>
+</head>
+
+<body>
+
+<div ng-app="SpringAppModule" ng-controller="appcontroller"> 
+<br>
+<br>
+<br>
+<br>
+<button type="button" value="Click to invoke service!" title="Click" ng-click="onSubmitLoadBlogs()">Load Blogs Into A File!</button>
+
+<br>
+<br>
+<br>
+<br>
+<input type="text" placeholder="Enter temperature value in Farenheit" ng-model="temp" size="50" /> &nbsp; &nbsp; <button type="button" value="Click to invoke service!" title="Click" ng-click="onSubmitConvTemp()">Convert Temperature!</button>
+{{temp}}
+
+<div style="color: GREEN">Converted Temp. Value in Celsius: {{convertedTempVal}}</div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<script src= "../resources/controller.js"></script>
+</head>
+
+<body>
+
+<div ng-app="SpringAppModule" ng-controller="appcontroller"> 
+<br>
+<br>
+
+<table border="1">
+	<tr>
+	<th>Id</th>
+	<th>Policy</th>
+	<th>Start Date</th>
+	<th>Description</th>
+	<th></th>
+	</tr>
+	
+  <tr ng-repeat="x in policies">
+  	<td>{{ x.id}}</td>
+    <td>{{ x.policyName}}</td>
+    <td>{{ x.startDate}}</td>
+    <td>{{ x.description}}</td>
+    <td><button type="button" value="deleteButton" title="Click" ng-click="onDeletePolicy(x.id)">Delete Record!</button></td>
+  </tr>
+</table>
+<br>
+<div style="color: RED">{{errorText}}</div>
+
+<br>
+<br>
+<button type="button" value="deleteButton" title="Click" ng-click="cleanPolicyCache()">Clean Cache!</button>
+
+</div>
+
+
+
+</body>
+</html>

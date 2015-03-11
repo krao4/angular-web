@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script src= "../resources/controller.js"></script>
+
+</head>
+
+<body>
+
+<div ng-app="SpringAppModule" ng-controller="appcontroller"> 
+<br>
+<br>
+<p>
+Agents in this area:
+</p>
+<table border="1">
+	<tr>
+	<th>First Name</th>
+	<th>Last Name</th>
+	</tr>
+	
+  <tr ng-repeat="x in customers">
+    <td>{{ x.firstName}}</td>
+    <td>{{ x.lastName}}</td>
+  </tr>
+</table>
+<br>
+ 	
+</div>
+
+</body>
+</html>

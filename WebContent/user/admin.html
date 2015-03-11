@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title>Admin</title>
+	<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<script src= "../resources/controller.js"></script>
+</head>
+<body>
+
+
+<div ng-app="SpringAppModule" ng-controller="appcontroller"> 
+
+<h3 restrict access="admin1">
+	 Admin access granted!
+</h3>
+<h3 restrict access="user1">
+	 User access granted!
+</h3>
+<br>
+<br>
+<br>
+<br>
+<button type="button" value="Click to invoke service!" title="Click" ng-click="gotoPolicy()">View Your Policies</button>
+<br>
+<br>
+<br>
+<br>
+<button type="button" value="Click to invoke service!" title="Click" ng-click="gotoCustomer()">View Your Agents</button>
+<br>
+<br>
+<br>
+<br>
+<button type="button" value="Click to invoke service!" title="Click" ng-click="gotoIntegration()" restrict access="admin1">Integration Services</button>
+</div>
+
+ 
+
+</body>
+</html>
