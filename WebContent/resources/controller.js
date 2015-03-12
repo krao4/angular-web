@@ -52,35 +52,35 @@ app.controller("appcontroller", function ($scope, $http) {
 	
   	$scope.gotoUser = 
 		function(user){
-  			window.location.href = 'http://localhost:8080/angular-web/user/admin.html'
+  			window.location.href = '/angularapp/user/admin.html'
   			sessionStorage.setItem(userkey, user);
 		}
   	$scope.gotoAdmin = 
 		function(user){
-  			window.location.href = 'http://localhost:8080/angular-web/user/admin.html';
+  			window.location.href = '/angularapp/user/admin.html';
   			sessionStorage.setItem(userkey, user);
 		} 
   	$scope.gotoPolicy = 
 		function(){
-  			window.location.href = 'http://localhost:8080/angular-web/policy/list.html';
+  			window.location.href = '/angularapp/policy/list.html';
 		}
   	$scope.gotoCustomer = 
 		function(){
-  			window.location.href = 'http://localhost:8080/angular-web/customer/list.html';
+  			window.location.href = '/angularapp/customer/list.html';
 		}
   	$scope.gotoIntegration = 
 		function(){
-  			window.location.href = 'http://localhost:8080/angular-web/integration/list.html';
+  			window.location.href = '/angularapp/integration/list.html';
 		}  	
 	
 
-	$http.get("http://localhost:8080/springapp/spring/policy", { headers: { 'Accept': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } }).success(
+	$http.get("/springapp/spring/policy", { headers: { 'Accept': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } }).success(
 			function(response) {
 				$scope.policies = response;
 			}
 		);
 	
-	$http.get("http://localhost:8080/springapp/spring/customer", { headers: { 'Accept': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } }).success(
+	$http.get("/springapp/spring/customer", { headers: { 'Accept': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } }).success(
 			function(response) {
 				$scope.customers = response;
 			}
@@ -88,9 +88,9 @@ app.controller("appcontroller", function ($scope, $http) {
 	
 	$scope.onDeletePolicy = 
 		function(id) {
-			$http.delete("http://localhost:8080/springapp/spring/policy/"+id, { headers: { 'Content-Type': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } }).success(
+			$http.delete("/springapp/spring/policy/"+id, { headers: { 'Content-Type': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } }).success(
 				function() {
-					$http.get("http://localhost:8080/springapp/spring/policy", { headers: { 'Accept': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } }).success(
+					$http.get("/springapp/spring/policy", { headers: { 'Accept': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } }).success(
 							function(response, status) {
 								$scope.policies = response;
 							}
@@ -106,7 +106,7 @@ app.controller("appcontroller", function ($scope, $http) {
 			
   	$scope.onSubmitLoadBlogs = 
 		function(){
-  			$http.get("http://localhost:8080/springapp/spring/blogs", { headers: { 'Accept': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } }).success(
+  			$http.get("/springapp/spring/blogs", { headers: { 'Accept': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } }).success(
 	  			function(response) {
   					alert("Blogs loaded in file!");
   				}
@@ -116,7 +116,7 @@ app.controller("appcontroller", function ($scope, $http) {
 
 	$scope.onSubmitConvTemp = 
 			function(){
-				$http.get("http://localhost:8080/springapp/spring/tempconv/"+$scope.temp).success(
+				$http.get("/springapp/spring/tempconv/"+$scope.temp).success(
 	  			function(response) {
 						$scope.convertedTempVal = response;
 					}
@@ -126,7 +126,7 @@ app.controller("appcontroller", function ($scope, $http) {
 	
 	$scope.logout = 
 		function() {
-			$http.get("http://localhost:8080/springapp/spring/users/logout").success(
+			$http.get("/springapp/spring/users/logout").success(
 					function(response){
 						$scope.logoutMessage = "The user has been logged out!";
 					}
@@ -135,7 +135,7 @@ app.controller("appcontroller", function ($scope, $http) {
 	
 	$scope.cleanPolicyCache = 
 		function() {
-			$http.get("http://localhost:8080/springapp/spring/policy/cleanCache").success(
+			$http.get("/springapp/spring/policy/cleanCache").success(
 					function(response){
 						
 					}
