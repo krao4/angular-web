@@ -74,13 +74,13 @@ app.controller("appcontroller", function ($scope, $http) {
 		}  	
 	
 
-	$http.get("/springapp/spring/policy", { headers: { 'Accept': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } }).success(
+	$http.get("/VOYAAPP/policy", { headers: { 'Accept': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } }).success(
 			function(response) {
 				$scope.policies = response;
 			}
 		);
 	
-	$http.get("/springapp/spring/customer", { headers: { 'Accept': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } }).success(
+	$http.get("/VOYAAPP/customer", { headers: { 'Accept': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } }).success(
 			function(response) {
 				$scope.customers = response;
 			}
@@ -88,9 +88,9 @@ app.controller("appcontroller", function ($scope, $http) {
 	
 	$scope.onDeletePolicy = 
 		function(id) {
-			$http.delete("/springapp/spring/policy/"+id, { headers: { 'Content-Type': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } }).success(
+			$http.delete("/VOYAAPP/policy/"+id, { headers: { 'Content-Type': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } }).success(
 				function() {
-					$http.get("/springapp/spring/policy", { headers: { 'Accept': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } }).success(
+					$http.get("/VOYAAPP/policy", { headers: { 'Accept': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } }).success(
 							function(response, status) {
 								$scope.policies = response;
 							}
@@ -106,7 +106,7 @@ app.controller("appcontroller", function ($scope, $http) {
 			
   	$scope.onSubmitLoadBlogs = 
 		function(){
-  			$http.get("/springapp/spring/blogs", { headers: { 'Accept': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } }).success(
+  			$http.get("/VOYAAPP/blogs", { headers: { 'Accept': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } }).success(
 	  			function(response) {
   					alert("Blogs loaded in file!");
   				}
@@ -116,7 +116,7 @@ app.controller("appcontroller", function ($scope, $http) {
 
 	$scope.onSubmitConvTemp = 
 			function(){
-				$http.get("/springapp/spring/tempconv/"+$scope.temp).success(
+				$http.get("/VOYAAPP/tempconv/"+$scope.temp, { headers: { 'Accept': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } } ).success(
 	  			function(response) {
 						$scope.convertedTempVal = response;
 					}
@@ -126,7 +126,7 @@ app.controller("appcontroller", function ($scope, $http) {
 	
 	$scope.logout = 
 		function() {
-			$http.get("/springapp/spring/users/logout").success(
+			$http.get("/VOYAAPP/userservice/logout", { headers: { 'Accept': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } }).success(
 					function(response){
 						$scope.logoutMessage = "The user has been logged out!";
 					}
@@ -135,7 +135,7 @@ app.controller("appcontroller", function ($scope, $http) {
 	
 	$scope.cleanPolicyCache = 
 		function() {
-			$http.get("/springapp/spring/policy/cleanCache").success(
+			$http.get("/VOYAAPP/policy/cleanCache", { headers: { 'Accept': 'application/json', 'SM_USER':sessionStorage.getItem(userkey) } }).success(
 					function(response){
 						
 					}
